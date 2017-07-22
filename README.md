@@ -39,6 +39,13 @@ Run the following container:
 
 Login to Kibana and you should see traffic coming into Elasticsearch.
 
+
+## Testing-II
+
+Run the following container:
+
+`docker run -d --name nginx-with-syslog --log-driver=syslog --log-opt syslog-address=udp://<logstash-host>:12201 -p 80:80 nginx:alpine`
+
 If you do a `docker logs` on the logstash container and you should see some messages coming through as well.
 
 You can set logs at the engine level as well by specifying `--log-opt gelf-address=udp://host:port` in your daemon arguments. Or you can use syslog as well as TLS if you wish to add in your own certs.
